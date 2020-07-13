@@ -1,0 +1,23 @@
+package web.dao;
+
+import java.util.List;
+
+
+import web.dto.Emp;
+
+public interface EmpDao {
+
+	/**
+	 * 전체조회
+	 * @return
+	 */
+	public List<Emp> selectAll();
+
+	/**
+	 * 사원 상세 조회
+	 * @param param
+	 * @return
+	 */
+	public Emp selectByEmpno(Emp param);
+
+}
