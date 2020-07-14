@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 마이바티스 3 Mapper DTD -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="dao.SelectKeyDao">
+	<insert id="insert" parameterType="dto.TestMember">
+		
+<!-- 		<selectKey order="BEFORE" resultType="int" keyProperty="no"> -->
+		<!-- before 인ㅅㅓ트 쿼리를 수행하기전에 selectKey에 있는 쿼리를 수행한다 -->
+<!-- 			SELECT test_member_seq.nextval FROM dual -->
+<!-- 		</selectKey> -->
+	
+		INSERT INTO test_member (no,id,pw)
+		VALUES(#{no},#{id},#{pw})
+		
+		
+		<selectKey order="AFTER" resultType="int" keyProperty="no">
+<!-- 			SELECT test_member_seq.currval FROM dual -->
+				SELECT max(no) FROM test_member
+		
+		
+		</selectKey>
+		
+		
+		
+	</insert>
+	
+	
+	
+	
+</mapper>
